@@ -1,0 +1,41 @@
+if you have any doubt just refer the pdf i given below
+
+
+
+----------------------------------------------------------------------
+1st page  code 
+---------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace exam
+{
+    public partial class logIn : Form
+    {
+        public logIn()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            credtainls credtainls = new credtainls();
+            credtainls.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
