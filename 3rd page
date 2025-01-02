@@ -1,0 +1,82 @@
+if you have any doubt just refer the pdf i given below 
+
+
+
+
+----------------------------------------------------------------------
+3rd page  code 
+---------------------------------------------------------------------
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+namespace exam
+{
+    public partial class credtainls : Form
+    {
+        public string username, password;
+        public credtainls()
+        {
+            InitializeComponent();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection("Data source=HEMASUNDHAR1;database=windowsforms;integrated security=yes");
+                conn.Open();
+                string query = "SELECT * FROM forms WHERE username = @username AND password = @password";
+                SqlCommand fetchcommand = new SqlCommand(query, conn);
+                fetchcommand.Parameters.AddWithValue("@username", username);
+                fetchcommand.Parameters.AddWithValue("@password", password);
+                SqlDataReader reader = fetchcommand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    MessageBox.Show("Login successfully");
+                    align align = new align();
+                    align.Show();
+                    this.Hide();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please check login credentials");
+            }
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            
+                password = textBox3.Text;
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form1 regis=new Form1();
+            regis.Show();
+            this.Hide();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            username = textBox2.Text;
+        }
+    }
+}
