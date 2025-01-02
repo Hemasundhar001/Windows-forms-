@@ -1,0 +1,205 @@
+if you have any doubt just refer the pdf i given below 
+
+
+
+
+----------------------------------------------------------------------
+1st page  code 
+---------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using Microsoft.Win32;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+
+namespace exam
+{
+    public partial class Form1 : Form
+    {
+        public string address, country, language, age, dateofbirth, username, firstname, lastname, password, confirmpassword, gender, emailid, mobilenumber;
+
+        private void eid_TextChanged(object sender, EventArgs e)
+        {
+            emailid = eid.Text;
+        }
+
+        private void mn_TextChanged(object sender, EventArgs e)
+        {
+            mobilenumber = mn.Text;
+        }
+
+        private void psw_TextChanged(object sender, EventArgs e)
+        {
+            password = psw.Text;
+        }
+
+        private void cpsw_TextChanged(object sender, EventArgs e)
+        {
+            confirmpassword = cpsw.Text;
+        }
+
+        private void reg_Click(object sender, EventArgs e)
+        {
+            string state = State.Text;
+            string District = district.Text;
+            //if (un.Text == "check text" &&
+            //psw.Text == "check text" && ln.Text == "check text")
+            //{
+            if (password == confirmpassword)
+            {
+                SqlConnection con = new SqlConnection("Data source=HEMASUNDHAR1;Database=windowsforms;integrated security=yes");
+                con.Open(); string query = $"insert into forms values('{firstname}','{lastname}','{username}','{gender}','{password}','{confirmpassword}','{emailid}','{mobilenumber}','{address}','{dateofbirth}','{age}','{language}','{country}','{state}','{District}')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                logIn logIn = new logIn();
+                logIn.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Password isn't matched");
+            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("fill the blanks with valid data validation.");
+            //}
+
+
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void eng_CheckedChanged(object sender, EventArgs e)
+        {
+            language = eng.Text;
+        }
+
+        private void hin_CheckedChanged(object sender, EventArgs e)
+        {
+            language = language + "," + hin.Text;
+        }
+
+        private void tel_CheckedChanged(object sender, EventArgs e)
+        {
+            language = language + "," + tel.Text;
+        }
+
+        private void sho_Click(object sender, EventArgs e)
+        {
+            credtainls credtainls = new credtainls();
+            credtainls.Show();
+            this.Hide();
+        }
+
+        private void State_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            district.Items.Clear();
+            district.Text = "";
+            if (count.SelectedItem.ToString() == "India")
+            {
+                switch (State.SelectedItem.ToString())
+                {
+                    case "Andhra Pradesh": district.Items.AddRange(new string[] { "Anantapur", "Chittoor", "East Godavari", "Alluri Sitarama Raju", "Anakapalli", "Annamaya", "Bapatla", "Eluru", "Guntur", "Kadapa", "Kakinada", "Konaseema", "Krishna", "Kurnool", "Manyam", "N T Rama Rao", "Nandyal", "Nellore", "Palnadu", "Prakasam", "Sri Balaji", "Sri Satya Sai", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari" }); break;
+                }
+            }
+        }
+
+        private void district_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adrr_TextChanged(object sender, EventArgs e)
+        {
+            address = adrr.Text;
+        }
+
+        private void count_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            country = count.Text;
+            State.Items.Clear();
+            State.Text = "";
+            district.Items.Clear();
+            district.Text = "";
+            switch (count.SelectedItem.ToString())
+            {
+                case "India": State.Items.AddRange(new string[] { "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal" }); break;
+            }
+
+        }
+
+        private void age2_TextChanged(object sender, EventArgs e)
+        {
+            age = age2.Text;
+        }
+
+        private void agecalcu_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dtp_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (password == confirmpassword)
+            {
+                dateofbirth = dtp.Text;
+            }
+            else
+            {
+                MessageBox.Show("Password dosent match");
+            }
+
+        }
+
+        private void un_TextChanged(object sender, EventArgs e)
+        {
+            username = un.Text;
+        }
+
+        private void f_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = f.Text;
+        }
+
+        private void m_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = m.Text;
+        }
+
+        private void ln_TextChanged(object sender, EventArgs e)
+        {
+            lastname = ln.Text;
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fn_TextChanged(object sender, EventArgs e)
+        {
+            firstname = fn.Text;
+        }
+    }
+}
