@@ -1,0 +1,91 @@
+if you have any doubt just refer the pdf i given below 
+
+
+
+
+----------------------------------------------------------------------
+5th page  code 
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace exam
+{
+    public partial class gridview : Form
+    {
+        public gridview()
+        {
+            InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            credtainls logIn = new credtainls();
+            logIn.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            align align = new align();
+            align.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection("Data source=HEMASUNDHAR1;database=windowsforms;integrated security=yes"))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM forms";
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+    }
+}
