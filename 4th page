@@ -1,0 +1,128 @@
+if you have any doubt just refer the pdf i given below 
+
+
+
+
+----------------------------------------------------------------------
+4th page  code 
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+//using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+namespace exam
+{
+    public partial class align : Form
+    {
+        public string address, country, language, age, dateofbirth, username, firstname, lastname, password, confirmpassword, gender, emailid, mobilenumber;
+
+        private void radioButton10_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Magenta;
+        }
+
+        private void radioButton11_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Gray;
+        }
+
+        private void radioButton12_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Orange;
+        }
+
+        private void radioButton13_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Cyan;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            credtainls credtainls = new credtainls();
+            credtainls.Show();
+            this.Hide();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            gridview gridview = new gridview();
+            gridview.Show();
+            this.Hide();
+        }
+
+        private void radioButton9_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Purple;
+        }
+
+        private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Brown;
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Red;
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Yellow;
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Green;
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.Blue;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.TextAlign = HorizontalAlignment.Center;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.TextAlign = HorizontalAlignment.Right;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.TextAlign = HorizontalAlignment.Left;
+        }
+
+
+        public align()
+        {
+            InitializeComponent();
+        }
+        private void LoadData()
+        {
+            LoadData();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}
